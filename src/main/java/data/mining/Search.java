@@ -1,7 +1,9 @@
 package data.mining;
 
+import com.google.gson.Gson;
 import edu.stanford.nlp.simple.*;
-
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class Search {
@@ -16,37 +18,57 @@ public class Search {
         for (Sentence sent : doc1.sentences()) {
             queryTokens.addAll(sent.words());
         }
+        System.out.println(queryTokens);
         for (Sentence sent : doc2.sentences()) {
             titleTokens.addAll(sent.words());
         }
+        System.out.println(titleTokens);
 
         // Use Jaccard to caculate the similarity
         Set<String> intersection = new HashSet<>(queryTokens);
         intersection.retainAll(titleTokens);
         double intersectionSize = intersection.size();
+        System.out.println("intersectionSize: " + intersectionSize);
         double unionSize = queryTokens.size() + titleTokens.size() - intersectionSize;
+        System.out.println("Union size: " + unionSize);
         return intersectionSize / unionSize;
+    }
+
+    public static List<String> tokenize(String text) {
+        // Implement your tokenization logic here
+        return Arrays.asList(text.split("\\s+"));
     }
 
     public static void main(String[] args) {
         //Take data from JSON file
-        List<String> dataset = Arrays.asList("Titlle1", "Titlle2", "Titlle3", "Titlle4", "Titlle5");
+        Gson gson = new Gson();
+        List<Aggreator> aggreatorList = null;
+        try (FileReader reader = new FileReader("C://Users/ADMIN/IdeaProjects/News-aggregator/src/main/java/data/mining/data.json")) {
+            Aggreator[] aggreatorArray = gson.fromJson(reader, Aggreator[].class);
+            aggreatorList = Arrays.asList(aggreatorArray);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //Get the title you want to search for from GUI
-        String query = "Title";
+        String query = "block";
 
         // Data preprocessing and calculate the similarity
-        Map<String, Double> similarityScores = new HashMap<>();
-        for (String title : dataset) {
-            double similarity = calculateSimilarity(query, title);
-            similarityScores.put(title, similarity);
+            Map<Aggreator, Double> similarityScores = new HashMap<>();
+        for (Aggreator aggreator  : aggreatorList) {
+            double similarity = calculateSimilarity(query, aggreator.getTitle());
+            similarityScores.put( aggreator , similarity);
         }
 
         // Sort result
-        List<Map.Entry<String, Double>> sortedResults = new ArrayList<>(similarityScores.entrySet());
+        List<Map.Entry<Aggreator, Double>> sortedResults = new ArrayList<>(similarityScores.entrySet());
         sortedResults.sort((entry1, entry2) -> Double.compare(entry2.getValue(), entry1.getValue()));
 
-        // Show result
         // Give sortedResults for GUI
+        int index = 0;
+//        for( Map.Entry<Aggreator,Double> entry : sortedResults){
+//            System.out.println("Title " + index +  " : " + entry.getKey().getTitle() + " : " + entry.getValue());
+//            index++;
+//        }
     }
 }
