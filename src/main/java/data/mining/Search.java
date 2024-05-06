@@ -1,7 +1,5 @@
 package data.mining;
 import com.google.gson.Gson;
-
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -12,21 +10,21 @@ public class Search {
 
     private final static double THRESHOLD = 0.75;
 
-    public static double calculateSimilarity(String query, String title) {
-        Map<String, Integer > queryVector = vectorizeText(query);
-        Map<String, Integer > titleVector = vectorizeText(title);
+    public static double calculateSimilarity(TextVector queryVector, TextVector titleVector) {
+        Map<String, Integer> query = queryVector.getVector();
+        Map<String, Integer> title = titleVector.getVector();
         Map<String , Integer > similarityVector = new HashMap<>();
         int numberOfWordsInTitle = 0;
         int countSimilarity = 0;
-        for ( Map.Entry<String, Integer> entryQuery : queryVector.entrySet()) {
-            for ( Map.Entry<String, Integer> entryTitle : titleVector.entrySet()) {
+        for ( Map.Entry<String, Integer> entryQuery : query.entrySet()) {
+            for ( Map.Entry<String, Integer> entryTitle : title.entrySet()) {
                 if ( 1 - LevenshteinDistance.calculateDistance( entryTitle.getKey() , entryQuery.getKey())*1.0 / entryTitle.getKey().length() >= THRESHOLD ){
                     similarityVector.put(entryTitle.getKey(), similarityVector.getOrDefault(entryTitle.getKey(),0) + 1);
                 }
             }
         }
 
-        for ( Map.Entry<String, Integer> entryTitle : titleVector.entrySet()) {
+        for ( Map.Entry<String, Integer> entryTitle : title.entrySet()) {
             numberOfWordsInTitle += entryTitle.getValue();
             countSimilarity += Math.min(similarityVector.getOrDefault(entryTitle.getKey() , 0) , entryTitle.getValue());
         }
@@ -34,19 +32,7 @@ public class Search {
         return countSimilarity*1.0/numberOfWordsInTitle;
     }
 
-
-    public static Map<String, Integer> vectorizeText(String text) {
-        Map<String, Integer> vector = new HashMap<>();
-        String[] words = text.split("\\s+");
-
-        for (String word : words) {
-            vector.put(word, vector.getOrDefault(word, 0) + 1);
-        }
-
-        return vector;
-    }
-
-    public static void main(String[] args) {
+    public static List<Map.Entry<Aggreator, Double>> sortedAggreator(String query) {
         Gson gson = new Gson();
         List<Aggreator> aggreatorList = null;
         try (FileReader reader = new FileReader("src/main/resources/data.json")) {
@@ -56,18 +42,18 @@ public class Search {
             e.printStackTrace();
         }
 
-        String query = "Blockchain";
         Map<Aggreator, Double> similarityScores = new HashMap<>();
-        for (Aggreator aggreator : aggreatorList) {
-            double similarity = calculateSimilarity(aggreator.getTitle() , query );
-            similarityScores.put(aggreator, similarity);
+        for (Aggreator aggregator : aggreatorList) {
+            TextVector queryVector = new TextVector(query);
+            TextVector titleVector = new TextVector(aggregator.getTitle());
+            double similarity = calculateSimilarity(queryVector, titleVector);
+            similarityScores.put(aggregator, similarity);
         }
 
         List<Map.Entry<Aggreator, Double>> sortedResults = new ArrayList<>(similarityScores.entrySet());
         sortedResults.sort((entry1, entry2) -> Double.compare(entry2.getValue(), entry1.getValue()));
 
-        for (Map.Entry<Aggreator, Double> entry : sortedResults) {
-            System.out.println("Tiêu đề: " + entry.getKey().getTitle() + ", Điểm tương đồng: " + entry.getValue());
-        }
+        return sortedResults;
     }
+
 }
