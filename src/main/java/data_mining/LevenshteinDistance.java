@@ -1,4 +1,4 @@
-package data.mining;
+package data_mining;
 
 import java.util.Arrays;
 

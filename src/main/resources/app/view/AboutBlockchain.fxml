@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="770.0" stylesheets="@../../stylesheet/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <right>
+        <AnchorPane prefHeight="680.0" prefWidth="770.0" style="-fx-background-color: #F0F8FF;" BorderPane.alignment="CENTER">
+                <ImageView fitHeight="680.0" fitWidth="770.0" pickOnBounds="true" preserveRatio="false">
+                    <image>
+                        <Image url="@../../img/bg.png" />
+                    </image>
+                    <viewport>
+                        <Rectangle2D />
+                    </viewport>
+                </ImageView>
+                <Label alignment="CENTER" blendMode="SRC_ATOP" layoutX="158.0" layoutY="7.0" prefHeight="74.0" prefWidth="488.0" styleClass="backgroundForLabelTimHieuPage" text="ABOUT BLOCKCHAIN" textFill="#df1717">
+                    <font>
+                        <Font name="Gill Sans Ultra Bold" size="30.0" />
+                    </font>
+                    <effect>
+                        <Glow />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </Label>
+                <Label layoutX="83.0" layoutY="484.0" prefHeight="187.0" prefWidth="592.0" style="-fx-background-color: #E5FFCC; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10; -fx-border-width: 3 3 3 3; -fx-border-color: #CCF999;" text="&#10;   - Transactions follow a specific process, depending on the blockchain they are taking place on. &#10;   - For example, on Bitcoin's blockchain, if you initiate a transaction using your cryptocurrency wallet - it &#10;  starts a sequence of events.&#10;   - In Bitcoin, your transaction is sent to a memory pool, where it is stored and queued until a miner or &#10;  validator picks it up. Once it is entered into a block and the block fills up with transactions, it is &#10;  closed and encrypted using an encryption algorithm. Then, the mining begins.">
+                    <effect>
+                        <ColorAdjust contrast="0.11" />
+                    </effect>
+                </Label>
+                <Label layoutX="77.0" layoutY="92.0" prefHeight="154.0" prefWidth="605.0" style="-fx-background-color: #FFCCCC; -fx-border-color: #FF9999; -fx-border-width: 3 3 3 3; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;" stylesheets="@../../stylesheet/style.css" text="&#10;   - A blockchain is a distributed database or ledger shared among a computer network's nodes. &#10;   - They are best known for their crucial role in cryptocurrency systems for maintaining a secure and &#10;   decentralized record of transactions, but they are not limited to cryptocurrency uses. &#10;   - Blockchains can be used to make data in any industry immutable - the term used to describe the inability to&#10;   be altered.">
+                    <effect>
+                        <ColorAdjust contrast="0.11" />
+                    </effect>
+                </Label>
+                <Label layoutX="18.0" layoutY="245.0" prefHeight="239.0" prefWidth="592.0" style="-fx-background-color: #FFE5CC; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10; -fx-border-color: #FFCC99; -fx-border-width: 3 3 3 3;" text="&#10;   - A blockchain consists of programs called scripts that conduct the tasks you usually would in a &#10;  database. Entering and accessing information and saving and storing it somewhere. A blockchain is&#10;  distributed, which means multiple copies are saved on many machines, and they must all match for it to &#10;  be valid.&#10;   - The blockchain collects transaction information and enters it into a block, like a cell in a spreadsheet &#10;  containing information. Once it is full, the information is run through an encryption algorithm, which&#10;  creates a hexadecimal number called the hash.&#10;   - The hash is then entered into the following block header and encrypted with the other information &#10;  in the block. This creates a series of blocks that are chained together.">
+                    <effect>
+                        <ColorAdjust contrast="0.11" />
+                    </effect>
+                </Label>
+                <Label alignment="CENTER" layoutX="280.0" layoutY="92.0" prefHeight="28.0" prefWidth="198.0" styleClass="labeltext-custom" text="WHAT IS BLOCKCHAIN?" textFill="#d71010">
+                    <font>
+                        <Font name="Gill Sans MT" size="15.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="171.0" layoutY="255.0" prefHeight="42.0" prefWidth="285.0" styleClass="labeltext-custom" text="HOW DOES A BLOCKCHAIN WORKS?" textFill="#d71010">
+                    <font>
+                        <Font name="Gill Sans MT" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="302.0" layoutY="493.0" prefHeight="42.0" prefWidth="198.0" styleClass="labeltext-custom" text="TRANSACTION PROCESS" textFill="#d71010">
+                    <font>
+                        <Font name="Gill Sans MT" size="15.0" />
+                    </font>
+                </Label>
+         <ImageView fitHeight="75.0" fitWidth="85.0" layoutX="46.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+         <ImageView fitHeight="86.0" fitWidth="100.0" layoutX="-1.0" pickOnBounds="true">
+            <image>
+               <Image url="@../../img/timhieu.png" />
+            </image>
+         </ImageView>
+        </AnchorPane>
+    </right>
+</BorderPane>

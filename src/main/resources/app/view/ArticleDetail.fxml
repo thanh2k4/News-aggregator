@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="729.0" style="-fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ArticleDetailController">
+   <bottom>
+        <ScrollPane fitToWidth="true" prefHeight="658.0" prefWidth="730.0" BorderPane.alignment="CENTER">
+            <content>
+                <VBox prefHeight="637.0" prefWidth="728.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="113.0">
+                           <children>
+                              <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleBackAction" text="Button" />
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" prefHeight="68.0" prefWidth="446.0" text="ARTICLE DETAIL" textFill="#db4316">
+                           <font>
+                              <Font name="Segoe Print Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="129.0">
+                           <children>
+                              <Button fx:id="highlightEntitiesButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleHighlightEntities" text="Button" />
+                           </children>
+                        </HBox>
+                            </children>
+                        </HBox>
+                  <ScrollPane fitToWidth="true" prefHeight="478.0" prefWidth="688.0">
+                     <content>
+                              <VBox prefHeight="514.0" prefWidth="673.0" spacing="15.0">
+                                  <children>
+                                      <HBox>
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="162.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                              <VBox HBox.hgrow="ALWAYS">
+                                                  <children>
+                                                      <Text fx:id="idText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="506.1366249322891" VBox.vgrow="ALWAYS" />
+                                                  </children>
+                                              </VBox>
+                                          </children>
+                                      </HBox>
+                                      <HBox>
+                                          <children>
+                                              <VBox prefHeight="24.0" prefWidth="165.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Link:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                    <Hyperlink fx:id="linkText" prefHeight="24.0" prefWidth="550.0" />
+                                          </children>
+                                      </HBox>
+                                      <HBox layoutX="10.0" layoutY="10.0">
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                              <VBox HBox.hgrow="ALWAYS">
+                                                  <children>
+                                                      <Text fx:id="typeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="496.5365295410156" VBox.vgrow="ALWAYS" />
+                                                  </children>
+                                              </VBox>
+                                          </children>
+                                      </HBox>
+                                      <HBox layoutX="10.0" layoutY="106.0" prefHeight="41.0" prefWidth="673.0">
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                    <Text fx:id="titleText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="496.5366973876953" />
+                                          </children>
+                                      </HBox>
+                                      <HBox layoutX="10.0" layoutY="202.0" />
+                                      <HBox layoutX="10.0" layoutY="298.0">
+                                          <children>
+                                              <VBox HBox.hgrow="ALWAYS" />
+                                          </children>
+                                      </HBox>
+                                      <HBox layoutX="10.0" layoutY="394.0">
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="114.93670463562012" />
+                                    <Text fx:id="summaryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="496.53675842285156" />
+                                          </children>
+                                      </HBox>
+                                      <HBox>
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Content:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                    <TextFlow fx:id="contentTextFlow" prefHeight="118.0" prefWidth="503.0" />
+                                          </children>
+                                      </HBox>
+                                      <HBox layoutX="10.0" layoutY="490.0">
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Author:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                    <Text fx:id="authorText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="494.936767578125" />
+                                          </children>
+                                      </HBox>
+                                      <HBox layoutX="10.0" layoutY="586.0" prefHeight="30.0" prefWidth="673.0">
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Hashtag:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                                    <Text fx:id="hashtagText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="496.5366973876953" />
+                                          </children>
+                                      </HBox>
+                                      <HBox layoutX="10.0" layoutY="682.0">
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                    <Text fx:id="categoryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="498.9367218017578" />
+                                          </children>
+                                      </HBox>
+                                      <HBox>
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="PublishDate:">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                    <Text fx:id="publishDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="497.59999084472656" />
+                                          </children>
+                                      </HBox>
+                                      <HBox>
+                                          <children>
+                                              <VBox prefHeight="18.0" prefWidth="176.0">
+                                                  <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="176.40118408203125">
+                                                          <font>
+                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
+                                                          </font>
+                                                      </Text>
+                                                  </children>
+                                              </VBox>
+                                          </children>
+                                      </HBox>
+                                  </children>
+                              </VBox>
+                     </content>
+                  </ScrollPane>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="10.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
+   </bottom>
+</BorderPane>

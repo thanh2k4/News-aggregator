@@ -1,0 +1,97 @@
+.label-custom {
+    -fx-background-color: #9999FF;
+    -fx-border-color: #3366CC;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5 5 5 5;
+    -fx-padding: 10px;
+}
+.label-aboutus{
+	-fx-background-color: #F5FFFA;
+	-fx-border-color: #6633FF;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10 10 10 10;
+    -fx-padding: 10px;
+}
+.labeltext-custom {
+    -fx-background-color: #FFB266;
+    -fx-border-color: #FF8000; 
+    -fx-border-width: 2px; 
+    -fx-border-radius: 2px; 
+    -fx-padding: 10px; 
+}
+.backgroundForHomepage{
+	-fx-background-image: url("../img/bgforhomepage.png");
+	-fx-background-color: transparent;
+}
+.backgroundForIntropage{
+    -fx-background-image: url("../img/bg.png");
+    -fx-background-color: transparent;
+}
+.backgroundForHistorypage{
+	-fx-background-image: url("../img/viewbg.jpg");
+	-fx-background-color: transparent;
+}
+.backgroundForSearchpage{
+	-fx-background-image: url("../img/bg.png");
+	-fx-background-color: transparent;
+}
+.backgroundForButtonSearch{
+	-fx-background-image: url("../img/searchbutton.png");
+}
+.backgroundForLabelHistoryPage {
+    -fx-background-image: url("../img/background1.jpg");
+    -fx-background-size: cover;
+    -fx-border-color: #BEBEBE;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10 10 10 10;
+    }
+.backgroundForSearchPage{
+	-fx-background-image: url("../img/bg.png");
+	-fx-background-color: transparent;
+}
+.red-text {
+    -fx-text-fill: red;
+}
+.backgroundForSearchHeader{
+	-fx-background-image: url("../img/viewbg.jpg");
+	-fx-background-radius: 10 10 10 10;
+}
+.backgroundForVBox{
+	-fx-background-image: url("../img/viewbg.jpg");
+	-fx-background-color: transparent;
+}
+.backgroundForLabelTimHieuPage{
+	-fx-background-image: url("../img/background1.jpg");
+    -fx-background-size: cover;
+    -fx-border-color: 	#FA8072;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10 10 10 10;
+}
+.backgroundComboboxHistory{
+	-fx-background-image: url("../img/bgcombobox.jpg");
+	-fx-background-color: transparent;
+}
+.search2{
+	-fx-background-image: url("../img/search2.png");
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

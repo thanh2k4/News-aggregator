@@ -1,0 +1,13 @@
+.buttonSideBar {
+	-fx-background-color: #FFFF66;
+	-fx-border-width: 5 5 5 5;
+	-fx-border-color: #FFFF00;
+	-fx-border-radius: 5 5 5 5;
+}
+
+.buttonSelected {
+    -fx-background-color: #FFFFFF;
+    -fx-border-width: 5 5 5 5;
+    -fx-border-color: #FFFF00;
+    -fx-border-radius: 5 5 5 5;
+}
