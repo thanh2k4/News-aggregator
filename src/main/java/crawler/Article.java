@@ -1,6 +1,7 @@
 package crawler;
 
 import java.time.LocalDate;
+import java.util.*;
 
 public class Article {
     private int id;
@@ -64,8 +65,11 @@ public class Article {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getContent() {
-        return content;
+    public Vector<String> getContent() {
+        String[] contents = this.content.split("[.!?]");
+        Vector<String> res = new Vector<>();
+        Collections.addAll(res, contents);
+        return res;
     }
     public void setContent(String content) {
         this.content = content;
@@ -105,5 +109,10 @@ public class Article {
     }
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Map<String, List<String>> getEntities() {
+        Map<String, List<String>> entities = new HashMap<>();
+        return entities;
     }
 }

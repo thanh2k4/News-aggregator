@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HistorySearchFileManager {
-    private static final String HISTORY_FILE_PATH = "History.json";
+    private static final String HISTORY_FILE_PATH = "src/main/resources/data/History.json";
     private static ObservableList<HistorySearchModel> historySearchModels = FXCollections.observableArrayList();
 
     public void loadJson() {

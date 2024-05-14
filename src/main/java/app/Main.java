@@ -1,5 +1,6 @@
 package app;
 
+import crawler.WebScrapper;
 import data_mining.LoadArticle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +54,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+//        WebScrapper.main(args);
         launch(args);
     }
 }

@@ -46,9 +46,6 @@ public class SearchContentController {
     private Search searchEngine;
     
     @FXML
-    private AdvancedSearch advancedSearchEngine;
-    
-    @FXML
     private Button previousButton;
     
     @FXML
@@ -98,22 +95,15 @@ public class SearchContentController {
         	searchKeyword = urlInput.getText().trim();
             List<Article> result = null;
             switch (selectedCriteria) {
-                case "All":
-                    String queryAll = urlInput.getText().trim();
-                    result = searchEngine.searchArticleByAll(queryAll);
+                case "Title":
+                    String queryTitle = urlInput.getText().trim();
+                    result = searchEngine.searchArticleByTitle(queryTitle);
                     break;
                 case "Author":
                     String queryAuthor = urlInput.getText().trim();
                     result = searchEngine.searchArticleByAuthor(queryAuthor);
                     break;
-                case "Title":
-                    String queryTitle = urlInput.getText().trim();
-                    result = searchEngine.searchArticleByTitle(queryTitle);
-                    break;
-                case "Content":
-                    String queryContent = urlInput.getText().trim();
-                    result = searchEngine.searchArticleByContent(queryContent);
-                    break;
+
                 case "Hashtag":
                     String queryHashtag = urlInput.getText().trim();
                     result = searchEngine.searchArticleByHashtag(queryHashtag);
@@ -143,7 +133,7 @@ public class SearchContentController {
                         queries.add(new Pair<>(criteria3, query3));
                     }
 
-                    result = advancedSearchEngine.searchArticleUnionMultipleCriterions(queries);
+                    result = searchEngine.searchArticleUnionMultipleCriterions(queries);
                     break;
                 }
                 case "IMC":{
@@ -166,16 +156,16 @@ public class SearchContentController {
                         queries.add(new Pair<>(criteria3, query3));
                     }
 
-                    result = advancedSearchEngine.searchArticleIntersectMutipleCriterions(queries);
+                    result = searchEngine.searchArticleIntersectMutipleCriterions(queries);
                     break;
                 }
             }
             searchResult = result;
             currentPage = 0;
-            displaySearchResult(result);
+            displayResult(result);
         }
     }
-    private void displaySearchResult(List<Article> result) {
+    private void displayResult(List<Article> result) {
     	articleBox.getChildren().clear();
         int startIndex = currentPage * RESULTS_PER_PAGE;
         int endIndex = Math.min(startIndex + RESULTS_PER_PAGE, result.size());
@@ -212,7 +202,7 @@ public class SearchContentController {
     private void previousPage() {
         if (currentPage > 0) {
             currentPage--;
-            displaySearchResult(searchResult);
+            displayResult(searchResult);
         }
     }
 
@@ -221,14 +211,14 @@ public class SearchContentController {
         int totalPages = (int) Math.ceil((double) searchResult.size() / RESULTS_PER_PAGE);
         if (currentPage < totalPages - 1) {
             currentPage++;
-            displaySearchResult(searchResult);
+            displayResult(searchResult);
         }
     }
     HistorySearchFileManager historySearchFileManager = new HistorySearchFileManager();
     private void showArticleDetails(Article article) {
         historySearchFileManager.writeJson(article);
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/ArticleDetail.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/view/ArticleDetail.fxml"));
             BorderPane articleDetailContent = loader.load();
             ArticleDetailController controller = loader.getController();
             controller.setSearchKeyword(searchKeyword);
@@ -243,11 +233,10 @@ public class SearchContentController {
     @FXML
     public void initialize() {
         searchEngine = new Search();
-        advancedSearchEngine = new AdvancedSearch();
-   //     List<Article> articles = searchEngine.getArticles();
-   //     displaySearchResult(articles);
-        searchCriteriaComboBox.getItems().addAll("All", "ID", "Author", "Title","Content", "Hashtag", "PublishDate","UMC", "IMC");
-        searchCriteriaComboBox.setValue("All");
+        List<Article> articles = searchEngine.getArticleList();
+        displayResult(articles);
+        searchCriteriaComboBox.getItems().addAll( "ID", "Author", "Title", "Hashtag", "PublishDate","UMC", "IMC");
+        searchCriteriaComboBox.setValue("Title");
         comboBoxAdvanced1.getItems().addAll("ID","Author","Title","Content","Hashtag");
         comboBoxAdvanced2.getItems().addAll("ID","Author","Title","Content","Hashtag");
         comboBoxAdvanced3.getItems().addAll("ID","Author","Title","Content","Hashtag");
@@ -305,7 +294,7 @@ public class SearchContentController {
             int totalPages = (int) Math.ceil((double) searchResult.size() / RESULTS_PER_PAGE);
             if (requestedPage > 0 && requestedPage <= totalPages) {
                 currentPage = requestedPage - 1;
-                displaySearchResult(searchResult);
+                displayResult(searchResult);
             } else {
  
                 Alert alert = new Alert(Alert.AlertType.ERROR);

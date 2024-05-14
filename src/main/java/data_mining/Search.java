@@ -1,6 +1,7 @@
 package data_mining;
 
 import crawler.Article;
+import javafx.util.Pair;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -71,14 +72,8 @@ public class Search {
         return result;
     }
 
-    public List<Article> searchArticleByAll(String queryAll) {
-    }
-
-    public List<Article> searchArticleByContent(String queryContent) {
-    }
-
     public List<Article> searchArticleByHashtag(String queryHashtag) {
-
+        return null;
     }
 
     public List<Article> searchArticleByDate(LocalDate startDate, LocalDate endDate) {
@@ -95,5 +90,16 @@ public class Search {
 
     public Article searchArticleByID(int id) {
         return articleList.get(id);
+    }
+
+    public List<Article> searchArticleUnionMultipleCriterions(List<Pair<String, String>> queries) {
+        return null;
+    }
+
+    public List<Article> searchArticleIntersectMutipleCriterions(List<Pair<String, String>> queries) {
+        return null;
+    }
+    public List<Article> getArticleList() {
+        return articleList;
     }
 }
