@@ -13,7 +13,7 @@ public class Search {
 
     private List<Article> articleList;
 
-    Search(){
+    public Search(){
         this.articleList = LoadArticle.getArticleList();
     }
 
@@ -62,7 +62,13 @@ public class Search {
     }
 
     public List<Article> searchArticleByAuthor (String author){
-        
+        List<Article> result = new ArrayList<>();
+        for ( Article article : articleList ){
+            if ( article.getAuthor().equals(author) ){
+                result.add( article );
+            }
+        }
+        return result;
     }
 
     public List<Article> searchArticleByAll(String queryAll) {
@@ -85,5 +91,9 @@ public class Search {
         }
 
         return result;
+    }
+
+    public Article searchArticleByID(int id) {
+        return articleList.get(id);
     }
 }

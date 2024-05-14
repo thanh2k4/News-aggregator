@@ -3,10 +3,14 @@ package crawler;
 import java.time.LocalDate;
 
 public class Article {
+    private int id;
     private String link;
     private String source;
     private String type;
     private String summary;
+
+
+
     private String title;
     private String content;
     private LocalDate date;
@@ -95,5 +99,11 @@ public class Article {
     }
     public void setKeywords(String keywords) {
         this.keywords = keywords;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 }

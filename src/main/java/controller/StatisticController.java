@@ -1,5 +1,6 @@
 package controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -60,10 +61,10 @@ public class StatisticController {
 	private void loadChartDataByTime() {
 	    HashMap<String, Integer> monthCounts = new HashMap<>();
 	    for (Article article : articles) {
-	        if (article.getDate().equalsIgnoreCase("Unknown")) {
+	        if (article.getDate() == null) {
 	            continue;
 	        }
-	        LocalDateTime dateTime = LocalDateTime.parse(article.getDate(), DateTimeFormatter.ISO_DATE_TIME);
+	        LocalDate dateTime = article.getDate();
 	        String yearMonth = dateTime.getYear() + "-" + dateTime.getMonthValue();
 
 	        if (monthCounts.containsKey(yearMonth)) {

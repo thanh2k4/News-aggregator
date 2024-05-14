@@ -99,7 +99,7 @@ public class ArticleDetailController {
         StringBuilder categoryBuilder = new StringBuilder(categories);
         categoryText.setText(categoryBuilder.toString());
 
-        publishDateText.setText(article.getDate());
+        publishDateText.setText( article.getDate().toString());
     }
     private void displayContentWithoutHighlighting(Vector<String> htmlContent) {
         contentTextFlow.getChildren().clear();

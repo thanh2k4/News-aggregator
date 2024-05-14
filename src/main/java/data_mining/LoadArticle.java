@@ -18,6 +18,9 @@ public class LoadArticle {
                     .withType(Article.class)
                     .build()
                     .parse();
+            for ( int i = 0 ; i < articleList.size() ; i++ ) {
+                articleList.get(i).setId(i);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

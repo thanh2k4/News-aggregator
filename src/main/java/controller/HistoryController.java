@@ -14,7 +14,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
-import store.Search;
+import data_mining.Search;
 
 import java.awt.Desktop;
 import java.io.IOException;

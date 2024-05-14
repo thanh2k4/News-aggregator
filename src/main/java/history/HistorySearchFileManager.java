@@ -33,7 +33,7 @@ public class HistorySearchFileManager {
     public void writeJson(Article article) {
         loadJson();
         try (FileWriter fileWriter = new FileWriter(HISTORY_FILE_PATH)) {
-            HistorySearchModel model = new HistorySearchModel(article.getId(), article.getWebName(), article.getTitle());
+            HistorySearchModel model = new HistorySearchModel(article.getId(), article.getLink(), article.getTitle());
             historySearchModels.add(0, model);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(historySearchModels, fileWriter);
