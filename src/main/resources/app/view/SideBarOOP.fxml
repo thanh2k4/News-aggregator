@@ -156,5 +156,29 @@
             </Button>
          </children>
       </FlowPane>
+      <FlowPane alignment="CENTER" prefHeight="96.0" prefWidth="281.0">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../img/refresh-arrow.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="reloadDataButton" mnemonicParsing="false" onAction="#reloadData" prefHeight="46.0" prefWidth="182.0" styleClass="buttonSideBar" stylesheets="@../../stylesheet/sidebar.css" text="LÀM MỚI DỮ LIỆU" textFill="#c71414">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color red="0.3490196168422699" green="0.35686275362968445" blue="0.239215686917305" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Button>
+         </children>
+      </FlowPane>
    </children>
 </VBox>

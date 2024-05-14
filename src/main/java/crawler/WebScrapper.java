@@ -17,7 +17,6 @@ public class WebScrapper {
             // Kết nối tới trang web cần thu thập dữ liệu
             String url = "https://www.forbes.com/search/?q=blockchain&sh=13a5acc6279f";
             Document doc = Jsoup.connect(url).get();
-
             // Lấy tất cả các phần tử chứa bài viết
             Elements articleElements = doc.select("div.article");
 

@@ -3,11 +3,20 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 
 import java.io.IOException;
 
@@ -25,6 +34,8 @@ public class SideBarController {
     private Button trendButton;
     @FXML
     private Button aboutUsButton;
+    @FXML
+    private Button reloadDataButton;
 
     @FXML
     void mainSwitch(ActionEvent event) {
@@ -67,7 +78,47 @@ public class SideBarController {
         resetButtonStyles();
         aboutUsButton.getStyleClass().add("buttonSelected");
     }
+    public void reloadData(ActionEvent event) {
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.setTitle("Confirm Reload Data");
 
+        // Create label
+        Label label = new Label("Are you sure to reload data?");
+
+        // Create buttons
+        Button yesButton = new Button("Yes");
+        Button cancelButton = new Button("Cancel");
+        yesButton.setMinWidth(80); // Set min width
+        yesButton.setPrefWidth(80); // Set preferred width
+        yesButton.setMaxWidth(80); // Set max width
+
+        cancelButton.setMinWidth(80); // Set min width
+        cancelButton.setPrefWidth(80); // Set preferred width
+        cancelButton.setMaxWidth(80); // Set max width
+
+        // Add functionality to buttons
+        yesButton.setOnAction(e -> {
+            // Do something when Yes is clicked
+            System.out.println("Yes clicked!");
+            popupStage.close();
+        });
+        cancelButton.setOnAction(e -> popupStage.close());
+
+        // Layout for label and buttons
+        VBox vBox = new VBox(10);
+        HBox hBox = new HBox(10);
+        hBox.getChildren().addAll(cancelButton, yesButton);
+        hBox.setAlignment(Pos.CENTER); // Align buttons to the center horizontally
+        hBox.setMargin( cancelButton ,new Insets(0, 30, 0, 0)); // Increase margin to the left and right of HBox
+        hBox.setMargin( yesButton ,new Insets(0, 0, 0, 30));
+        vBox.getChildren().addAll(label, hBox);
+        vBox.setAlignment(Pos.CENTER); // Align VBox content to the center vertically
+        vBox.setPadding(new Insets(10));
+
+        popupStage.setScene(new Scene(vBox, 300, 100));
+        popupStage.showAndWait();
+    }
     private void loadContent(String fxmlPath, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -77,7 +128,7 @@ public class SideBarController {
             Parent root = scene.getRoot();
             if (root instanceof BorderPane) {
                 BorderPane borderPane = (BorderPane) root;
-                borderPane.setCenter(null); 
+                borderPane.setCenter(null);
                 borderPane.setCenter(content);
             } else {
                 System.out.println("Root is not an instance of BorderPane!");
@@ -94,4 +145,6 @@ public class SideBarController {
         trendButton.getStyleClass().remove("buttonSelected");
         aboutUsButton.getStyleClass().remove("buttonSelected");
     }
+
+
 }

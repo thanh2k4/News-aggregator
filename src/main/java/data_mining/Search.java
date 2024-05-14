@@ -97,9 +97,26 @@ public class Search {
     }
 
     public List<Article> searchArticleIntersectMutipleCriterions(List<Pair<String, String>> queries) {
-        return null;
+        Search search = new Search();
+        for ( Pair<String, String> query : queries ) {
+            switch (query.getKey()){
+                case "title":
+                    search.setArticleList(search.searchArticleByTitle(query.getValue()));
+                    break;
+                case "author":
+                    search.setArticleList(search.searchArticleByAuthor(query.getValue()));
+                    break;
+                case "hashtag":
+                    search.setArticleList(search.searchArticleByHashtag(query.getValue()));
+                    break;
+            }
+        }
+        return search.getArticleList();
     }
     public List<Article> getArticleList() {
         return articleList;
+    }
+    public void setArticleList(List<Article> articleList) {
+        this.articleList = articleList;
     }
 }

@@ -7,6 +7,7 @@ import crawler.Article;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,8 +18,6 @@ public class LoadArticle {
     private static List<Article> articleList = new ArrayList<>();
 
     public static List<Article> getArticleList() {
-        System.out.println("Bắt đầu load nè ----------------------------------------------------------------------------------");
-
         try (CSVReader reader = new CSVReader(new FileReader(FILE_PATH))) {
             String[] nextLine;
             reader.readNext();
@@ -32,17 +31,14 @@ public class LoadArticle {
                 article.setType(nextLine[3]);
                 article.setSummary(nextLine[4]);
                 article.setContent(nextLine[5]);
-//                article.setDate(nextLine[6] );
+                article.setDate( LocalDate.parse(nextLine[6] , DateTimeFormatter.ofPattern("yyyy-MM-dd")) );
                 article.setTags(nextLine[7]);
                 article.setAuthor(nextLine[8]);
                 article.setCategories(nextLine[9]);
-                System.out.println(article.toString());
                 articleList.add(article);
                 id++;
             }
-            System.out.println("Load thành công nè ----------------------------------------------------------------------------------");
         } catch (IOException e) {
-            System.out.println("Load file thất bại rùi ----------------------------------------------------------------------------------");
             e.printStackTrace();
         } catch (CsvValidationException e) {
             throw new RuntimeException(e);
