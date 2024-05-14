@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="680.0" prefWidth="770.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="680.0" fitWidth="770.0" layoutX="35.0" layoutY="42.0" pickOnBounds="true" preserveRatio="false">
+         <image>
+            <Image url="@../img/bg.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <Label alignment="CENTER" blendMode="SRC_ATOP" layoutX="127.0" layoutY="7.0" prefHeight="113.0" prefWidth="550.0" styleClass="backgroundForLabelTimHieuPage" text="Thành Viên" textFill="#df1717">
+         <font>
+            <Font name="Gill Sans Ultra Bold" size="42.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <ImageView fitHeight="75.0" fitWidth="85.0" layoutX="46.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="86.0" fitWidth="100.0" layoutX="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/timhieu.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="238.0" layoutY="115.0" prefHeight="55.0" prefWidth="466.0" text="Nguyễn Văn A - 20220000" textFill="#5f3535">
+         <font>
+            <Font name="Cambria Italic" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="88.0" layoutY="170.0" prefHeight="55.0" prefWidth="371.0" text="a - 2" textFill="#5f3535">
+         <font>
+            <Font name="Cambria" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="388.0" layoutY="225.0" prefHeight="55.0" prefWidth="371.0" text="a - 2" textFill="#5f3535">
+         <font>
+            <Font name="Cambria" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="280.0" prefHeight="55.0" prefWidth="371.0" text="a - 2" textFill="#5f3535">
+         <font>
+            <Font name="Cambria" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="388.0" layoutY="333.0" prefHeight="55.0" prefWidth="371.0" text="a - 2" textFill="#5f3535">
+         <font>
+            <Font name="Cambria" size="41.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
