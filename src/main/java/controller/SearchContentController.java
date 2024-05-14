@@ -165,6 +165,7 @@ public class SearchContentController {
             displayResult(result);
         }
     }
+
     private void displayResult(List<Article> result) {
     	articleBox.getChildren().clear();
         int startIndex = currentPage * RESULTS_PER_PAGE;
@@ -235,11 +236,11 @@ public class SearchContentController {
         searchEngine = new Search();
         List<Article> articles = searchEngine.getArticleList();
         displayResult(articles);
-        searchCriteriaComboBox.getItems().addAll( "ID", "Author", "Title", "Hashtag", "PublishDate","UMC", "IMC");
+        searchCriteriaComboBox.getItems().addAll(  "Title","ID", "Author", "Hashtag", "PublishDate","UMC", "IMC");
         searchCriteriaComboBox.setValue("Title");
-        comboBoxAdvanced1.getItems().addAll("ID","Author","Title","Content","Hashtag");
-        comboBoxAdvanced2.getItems().addAll("ID","Author","Title","Content","Hashtag");
-        comboBoxAdvanced3.getItems().addAll("ID","Author","Title","Content","Hashtag");
+        comboBoxAdvanced1.getItems().addAll("ID","Author","Title","Hashtag");
+        comboBoxAdvanced2.getItems().addAll("ID","Author","Title","Hashtag");
+        comboBoxAdvanced3.getItems().addAll("ID","Author","Title","Hashtag");
         urlInput.setVisible(true);
         startDatePicker.setVisible(false);
         endDatePicker.setVisible(false);

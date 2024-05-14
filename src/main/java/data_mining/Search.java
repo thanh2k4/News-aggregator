@@ -93,7 +93,32 @@ public class Search {
     }
 
     public List<Article> searchArticleUnionMultipleCriterions(List<Pair<String, String>> queries) {
-        return null;
+        Set<Integer> setOfIds = new HashSet<>();
+        Search search = new Search();
+        List<Article> result = new ArrayList<>();
+        for (Pair<String, String> query : queries) {
+            List<Article> temp = new ArrayList<>();
+            switch (query.getKey()){
+                case "title":
+                    temp = search.searchArticleByTitle(query.getValue());
+                    break;
+                case "author":
+                    temp = search.searchArticleByAuthor(query.getValue());
+                    break;
+                case "hashtag":
+                    temp = search.searchArticleByHashtag(query.getValue());
+                    break;
+                case "id":
+                    temp.add(search.searchArticleByID(Integer.parseInt(query.getValue())));
+            }
+            for (Article article : temp) {
+                setOfIds.add(article.getId());
+            }
+        }
+        for (Integer id : setOfIds) {
+            result.add(searchArticleByID(id));
+        }
+        return result;
     }
 
     public List<Article> searchArticleIntersectMutipleCriterions(List<Pair<String, String>> queries) {
@@ -108,6 +133,9 @@ public class Search {
                     break;
                 case "hashtag":
                     search.setArticleList(search.searchArticleByHashtag(query.getValue()));
+                    break;
+                case "id" :
+                    search.setArticleList(new ArrayList<>(Collections.singletonList(search.searchArticleByID(Integer.parseInt(query.getValue())))));
                     break;
             }
         }

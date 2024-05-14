@@ -18,6 +18,7 @@ public class LoadArticle {
     private static List<Article> articleList = new ArrayList<>();
 
     public static List<Article> getArticleList() {
+        List<Article> result = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader(FILE_PATH))) {
             String[] nextLine;
             reader.readNext();
@@ -35,9 +36,10 @@ public class LoadArticle {
                 article.setTags(nextLine[7]);
                 article.setAuthor(nextLine[8]);
                 article.setCategories(nextLine[9]);
-                articleList.add(article);
+                result.add(article);
                 id++;
             }
+            articleList = result;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (CsvValidationException e) {
