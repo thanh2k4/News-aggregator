@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="770.0" stylesheets="@../../stylesheet/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="770.0" stylesheets="@../stylesheet/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <right>
         <AnchorPane prefHeight="680.0" prefWidth="770.0" style="-fx-background-color: #F0F8FF;" BorderPane.alignment="CENTER">
                 <ImageView fitHeight="680.0" fitWidth="770.0" pickOnBounds="true" preserveRatio="false">
                     <image>
-                        <Image url="@../../img/bg.png" />
+                        <Image url="@../img/bg.png" />
                     </image>
                     <viewport>
                         <Rectangle2D />
@@ -42,7 +42,7 @@
                         <ColorAdjust contrast="0.11" />
                     </effect>
                 </Label>
-                <Label layoutX="77.0" layoutY="92.0" prefHeight="154.0" prefWidth="605.0" style="-fx-background-color: #FFCCCC; -fx-border-color: #FF9999; -fx-border-width: 3 3 3 3; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;" stylesheets="@../../stylesheet/style.css" text="&#10;   - A blockchain is a distributed database or ledger shared among a computer network's nodes. &#10;   - They are best known for their crucial role in cryptocurrency systems for maintaining a secure and &#10;   decentralized record of transactions, but they are not limited to cryptocurrency uses. &#10;   - Blockchains can be used to make data in any industry immutable - the term used to describe the inability to&#10;   be altered.">
+                <Label layoutX="77.0" layoutY="92.0" prefHeight="154.0" prefWidth="605.0" style="-fx-background-color: #FFCCCC; -fx-border-color: #FF9999; -fx-border-width: 3 3 3 3; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;" stylesheets="@../stylesheet/style.css" text="&#10;   - A blockchain is a distributed database or ledger shared among a computer network's nodes. &#10;   - They are best known for their crucial role in cryptocurrency systems for maintaining a secure and &#10;   decentralized record of transactions, but they are not limited to cryptocurrency uses. &#10;   - Blockchains can be used to make data in any industry immutable - the term used to describe the inability to&#10;   be altered.">
                     <effect>
                         <ColorAdjust contrast="0.11" />
                     </effect>
@@ -70,7 +70,7 @@
          <ImageView fitHeight="75.0" fitWidth="85.0" layoutX="46.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
          <ImageView fitHeight="86.0" fitWidth="100.0" layoutX="-1.0" pickOnBounds="true">
             <image>
-               <Image url="@../../img/timhieu.png" />
+               <Image url="@../img/timhieu.png" />
             </image>
          </ImageView>
         </AnchorPane>

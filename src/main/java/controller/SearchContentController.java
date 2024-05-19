@@ -219,7 +219,7 @@ public class SearchContentController {
     private void showArticleDetails(Article article) {
         historySearchFileManager.writeJson(article);
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/view/ArticleDetail.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ArticleDetail.fxml"));
             BorderPane articleDetailContent = loader.load();
             ArticleDetailController controller = loader.getController();
             controller.setSearchKeyword(searchKeyword);

@@ -1,19 +1,13 @@
 package controller;
 
-import crawler.NewsApi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -39,42 +33,42 @@ public class SideBarController {
 
     @FXML
     void mainSwitch(ActionEvent event) {
-        loadContent("/app/view/MainScreen.fxml", event);
+        loadContent("/view/MainScreen.fxml", event);
         resetButtonStyles();
         mainButton.getStyleClass().add("buttonSelected");
     }
 
     @FXML
     void aboutblockchainSwitch(ActionEvent event) {
-        loadContent("/app/view/AboutBlockchain.fxml", event);
+        loadContent("/view/AboutBlockchain.fxml", event);
         resetButtonStyles();
         aboutBlockchainButton.getStyleClass().add("buttonSelected");
     }
 
     @FXML
     void searchSwitch(ActionEvent event) {
-        loadContent("/app/view/SearchContent.fxml", event);
+        loadContent("/view/SearchContent.fxml", event);
         resetButtonStyles();
         searchButton.getStyleClass().add("buttonSelected");
     }
 
     @FXML
     void historySwitch(ActionEvent event) {
-        loadContent("/app/view/SearchHistoryContent.fxml", event);
+        loadContent("/view/SearchHistoryContent.fxml", event);
         resetButtonStyles();
         historyButton.getStyleClass().add("buttonSelected");
     }
 
     @FXML
     void trendSwitch(ActionEvent event) {
-        loadContent("/app/view/Statistic.fxml", event);
+        loadContent("/view/Statistic.fxml", event);
         resetButtonStyles();
         trendButton.getStyleClass().add("buttonSelected");
     }
 
     @FXML
     void aboutusSwitch(ActionEvent event) {
-        loadContent("/app/view/AboutUs.fxml", event);
+        loadContent("/view/AboutUs.fxml", event);
         resetButtonStyles();
         aboutUsButton.getStyleClass().add("buttonSelected");
     }
@@ -82,7 +76,7 @@ public class SideBarController {
     @FXML
     void reloadData(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/view/ConfirmReloadData.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ConfirmReloadData.fxml"));
             Parent root = loader.load();
 
             ConfirmReloadDataController controller = loader.getController();

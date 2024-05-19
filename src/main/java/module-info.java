@@ -10,7 +10,7 @@ module app {
     requires java.net.http;
 
     opens history to com.google.gson;
-    opens app.view to javafx.fxml;
+    opens view to javafx.fxml;
     exports app;
 
     exports controller;

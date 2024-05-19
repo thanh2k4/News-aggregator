@@ -39,10 +39,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("view/HomepageView.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/view/HomepageView.fxml"));
         root = mainLoader.load();
         
-        FXMLLoader sidebarLoader = new FXMLLoader(getClass().getResource("view/SideBarOOP.fxml"));
+        FXMLLoader sidebarLoader = new FXMLLoader(getClass().getResource("/view/SideBarOOP.fxml"));
         root.setLeft(sidebarLoader.load());
         
         LoadArticle loadArticle = new LoadArticle();
