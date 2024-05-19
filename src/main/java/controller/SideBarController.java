@@ -1,5 +1,6 @@
 package controller;
 
+import crawler.NewsApi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -88,31 +89,30 @@ public class SideBarController {
         // Create buttons
         Button yesButton = new Button("Yes");
         Button cancelButton = new Button("Cancel");
-        yesButton.setMinWidth(80); // Set min width
-        yesButton.setPrefWidth(80); // Set preferred width
-        yesButton.setMaxWidth(80); // Set max width
+        yesButton.setMinWidth(80);
+        yesButton.setPrefWidth(80);
+        yesButton.setMaxWidth(80);
 
-        cancelButton.setMinWidth(80); // Set min width
-        cancelButton.setPrefWidth(80); // Set preferred width
-        cancelButton.setMaxWidth(80); // Set max width
+        cancelButton.setMinWidth(80);
+        cancelButton.setPrefWidth(80);
+        cancelButton.setMaxWidth(80);
 
-        // Add functionality to buttons
         yesButton.setOnAction(e -> {
-            // Do something when Yes is clicked
+            String[] args = new String[0];
+            NewsApi.main(args);
             System.out.println("Yes clicked!");
             popupStage.close();
         });
         cancelButton.setOnAction(e -> popupStage.close());
 
-        // Layout for label and buttons
         VBox vBox = new VBox(10);
         HBox hBox = new HBox(10);
         hBox.getChildren().addAll(cancelButton, yesButton);
-        hBox.setAlignment(Pos.CENTER); // Align buttons to the center horizontally
-        hBox.setMargin( cancelButton ,new Insets(0, 30, 0, 0)); // Increase margin to the left and right of HBox
+        hBox.setAlignment(Pos.CENTER);
+        hBox.setMargin( cancelButton ,new Insets(0, 30, 0, 0));
         hBox.setMargin( yesButton ,new Insets(0, 0, 0, 30));
         vBox.getChildren().addAll(label, hBox);
-        vBox.setAlignment(Pos.CENTER); // Align VBox content to the center vertically
+        vBox.setAlignment(Pos.CENTER);
         vBox.setPadding(new Insets(10));
 
         popupStage.setScene(new Scene(vBox, 300, 100));

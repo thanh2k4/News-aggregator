@@ -7,6 +7,7 @@ module app {
     requires com.google.gson;
     requires org.jsoup;
     requires com.opencsv;
+    requires java.net.http;
 
     opens app.view to javafx.fxml;
     exports app;

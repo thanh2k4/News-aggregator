@@ -26,15 +26,15 @@ public class LoadArticle {
             while (( nextLine = reader.readNext()) != null){
                 Article article = new Article();
                 article.setId(id);
-                article.setTitle(nextLine[0]);
-                article.setLink(nextLine[1]);
-                article.setSource(nextLine[2]);
-                article.setType(nextLine[3]);
-                article.setSummary(nextLine[4]);
-                article.setContent(nextLine[5]);
-                article.setDate( LocalDate.parse(nextLine[6] , DateTimeFormatter.ofPattern("yyyy-MM-dd")) );
-                article.setTags(nextLine[7]);
-                article.setAuthor(nextLine[8]);
+                article.setLink(nextLine[0]);
+                article.setSource(nextLine[1]);
+                article.setTitle(nextLine[2]);
+                article.setSummary(nextLine[3]);
+                article.setContent(nextLine[4]);
+                article.setDate( LocalDate.parse(nextLine[5].substring(0,10) , DateTimeFormatter.ofPattern("yyyy-MM-dd")) );
+                article.setAuthor(nextLine[6]);
+                article.setType(nextLine[7]);
+                article.setTags(nextLine[8]);
                 article.setCategories(nextLine[9]);
                 result.add(article);
                 id++;

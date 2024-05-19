@@ -9,16 +9,12 @@ public class Article {
     private String source;
     private String type;
     private String summary;
-
-
-
     private String title;
     private String content;
     private LocalDate date;
     private String author;
     private String tags;
     private String categories;
-    private String keywords;
         
     public Article() {
         this.link = link;
@@ -31,7 +27,6 @@ public class Article {
         this.author = author;
         this.tags = tags;
         this.categories = "";
-        this.keywords = "";
     }
     
     //Getter Setter
@@ -97,12 +92,6 @@ public class Article {
     }
     public void setCategories(String categories) {
         this.categories = categories;
-    }
-    public String getKeywords() {
-        return keywords;
-    }
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
     }
     public int getId() {
         return id;
