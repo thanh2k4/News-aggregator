@@ -9,8 +9,10 @@ module app {
     requires com.opencsv;
     requires java.net.http;
 
+    opens history to com.google.gson;
     opens app.view to javafx.fxml;
     exports app;
+
     exports controller;
     opens controller to javafx.fxml;
 }

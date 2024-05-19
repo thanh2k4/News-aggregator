@@ -178,7 +178,7 @@ public class SearchContentController {
         if (result != null && !result.isEmpty()) {
             for (int i = startIndex ; i < endIndex ; i++) {
                 Article article = result.get(i);
-                TextField articleHeader = new TextField( article.getTitle());
+                TextField articleHeader = new TextField("ID: " + article.getId() + " - " + article.getTitle());
                 articleHeader.setEditable(false);
                 articleHeader.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
                 articleHeader.getStyleClass().add("red-text");
@@ -223,7 +223,7 @@ public class SearchContentController {
             BorderPane articleDetailContent = loader.load();
             ArticleDetailController controller = loader.getController();
             controller.setSearchKeyword(searchKeyword);
-            controller.setArticle( article);
+            controller.setArticle(article);
             Main.changeCenterContent(articleDetailContent);
         } catch (IOException e) {
             e.printStackTrace();
@@ -297,7 +297,6 @@ public class SearchContentController {
                 currentPage = requestedPage - 1;
                 displayResult(searchResult);
             } else {
- 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText(null);

@@ -56,7 +56,6 @@ public class ConfirmReloadDataController {
                 try {
                     NewsApi.main(args);
                 } catch (CustomException e) {
-                    // Trong trường hợp xảy ra lỗi, hiển thị cửa sổ thông báo lỗi
                     Platform.runLater(() -> {
                         Alert alertError = new Alert(Alert.AlertType.ERROR);
                         alertError.setTitle("Error");

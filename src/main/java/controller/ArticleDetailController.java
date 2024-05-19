@@ -29,6 +29,9 @@ import javafx.scene.text.FontWeight;
 public class ArticleDetailController {
 
     @FXML
+    private Text idText;
+
+    @FXML
     private Hyperlink linkText;
 
     @FXML
@@ -69,6 +72,7 @@ public class ArticleDetailController {
     public void setArticle(Article article) {
 
         this.currentArticle = article;
+        idText.setText(String.valueOf(article.getId()));
         linkText.setText(article.getLink());
         linkText.setOnAction(event -> {
             try {
@@ -149,7 +153,7 @@ public class ArticleDetailController {
         } else {
             removeHighlight();
             isHighlighted = false; 
-    }
+        }
     }
 
     private void highlightEntities() {
