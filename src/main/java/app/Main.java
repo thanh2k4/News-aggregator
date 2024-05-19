@@ -53,7 +53,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-//        WebScrapper.main(args);
         launch(args);
     }
 }

@@ -1,21 +1,25 @@
 package crawler;
 
 import java.io.FileWriter;
+import java.net.ConnectException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.io.IOException;
+import java.nio.channels.UnresolvedAddressException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.opencsv.CSVWriter;
+import exception.CustomException;
+import javafx.scene.control.Alert;
 
 
 public class NewsApi {
     private final static String FILE_PATH = "src/main/resources/data/articles.csv";
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CustomException {
         String url = "https://newsapi.org/v2/everything?q=Blockchain&apiKey=10398e3c397d4c438a6c16e3f88785d1";
 
         HttpClient client = HttpClient.newHttpClient();
@@ -36,8 +40,9 @@ public class NewsApi {
 
             //Write to CSV
             writeArticlesToCsv(articles);
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+        }
+        catch (IOException | InterruptedException e) {
+            throw new CustomException("Please check your network connection. ");
         }
     }
     private static void writeArticlesToCsv(JsonArray articles) {

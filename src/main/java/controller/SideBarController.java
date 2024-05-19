@@ -78,46 +78,30 @@ public class SideBarController {
         resetButtonStyles();
         aboutUsButton.getStyleClass().add("buttonSelected");
     }
-    public void reloadData(ActionEvent event) {
-        Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL);
-        popupStage.setTitle("Confirm Reload Data");
 
-        // Create label
-        Label label = new Label("Are you sure to reload data?");
+    @FXML
+    void reloadData(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/view/ConfirmReloadData.fxml"));
+            Parent root = loader.load();
 
-        // Create buttons
-        Button yesButton = new Button("Yes");
-        Button cancelButton = new Button("Cancel");
-        yesButton.setMinWidth(80);
-        yesButton.setPrefWidth(80);
-        yesButton.setMaxWidth(80);
+            ConfirmReloadDataController controller = loader.getController();
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Confirm Reload Data");
+            popupStage.setScene(new Scene(root, 300, 100));
 
-        cancelButton.setMinWidth(80);
-        cancelButton.setPrefWidth(80);
-        cancelButton.setMaxWidth(80);
+            controller.setPopupStage(popupStage);
 
-        yesButton.setOnAction(e -> {
-            String[] args = new String[0];
-            NewsApi.main(args);
-            System.out.println("Yes clicked!");
-            popupStage.close();
-        });
-        cancelButton.setOnAction(e -> popupStage.close());
-
-        VBox vBox = new VBox(10);
-        HBox hBox = new HBox(10);
-        hBox.getChildren().addAll(cancelButton, yesButton);
-        hBox.setAlignment(Pos.CENTER);
-        hBox.setMargin( cancelButton ,new Insets(0, 30, 0, 0));
-        hBox.setMargin( yesButton ,new Insets(0, 0, 0, 30));
-        vBox.getChildren().addAll(label, hBox);
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setPadding(new Insets(10));
-
-        popupStage.setScene(new Scene(vBox, 300, 100));
-        popupStage.showAndWait();
+            popupStage.showAndWait();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
+
     private void loadContent(String fxmlPath, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
