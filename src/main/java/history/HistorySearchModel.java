@@ -10,6 +10,8 @@ public class HistorySearchModel {
     private String title;
     private String timestamp;
 
+    public HistorySearchModel() {}
+	
     public HistorySearchModel(int id, String webName, String title) {
         this.id = id;
         this.webName = webName;
