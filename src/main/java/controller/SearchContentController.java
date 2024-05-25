@@ -99,11 +99,15 @@ public class SearchContentController {
                     String queryTitle = urlInput.getText().trim();
                     result = searchEngine.searchArticleByTitle(queryTitle);
                     break;
+                case "ID":
+                    int queryId = Integer.parseInt(urlInput.getText().trim());
+                    result = new ArrayList<>();
+                    result.add(searchEngine.searchArticleByID(queryId));
+                    break;
                 case "Author":
                     String queryAuthor = urlInput.getText().trim();
                     result = searchEngine.searchArticleByAuthor(queryAuthor);
                     break;
-
                 case "Hashtag":
                     String queryHashtag = urlInput.getText().trim();
                     result = searchEngine.searchArticleByHashtag(queryHashtag);
