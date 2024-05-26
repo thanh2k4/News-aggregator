@@ -48,7 +48,7 @@ public class Main extends Application {
         LoadArticle loadArticle = new LoadArticle();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("APP");
+        primaryStage.setTitle("NEWS AGGREGATOR");
         primaryStage.show();
     }
 

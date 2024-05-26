@@ -15,19 +15,6 @@ public class Article {
     private String author;
     private String tags;
     private String categories;
-        
-    public Article() {
-        this.link = link;
-        this.source = source;
-        this.type = type;
-        this.summary = summary;
-        this.title = title;
-        this.content = content;
-        this.date = date;
-        this.author = author;
-        this.tags = tags;
-        this.categories = "";
-    }
     
     //Getter Setter
     public String getLink() {

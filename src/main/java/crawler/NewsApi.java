@@ -16,40 +16,51 @@ import com.opencsv.CSVWriter;
 import exception.CustomException;
 import javafx.scene.control.Alert;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 
 public class NewsApi {
     private final static String FILE_PATH = "src/main/resources/data/articles.csv";
+    private final static String API_KEY = "10398e3c397d4c438a6c16e3f88785d1";
     public static void main(String[] args) throws CustomException {
-        String url = "https://newsapi.org/v2/everything?q=Blockchain&apiKey=10398e3c397d4c438a6c16e3f88785d1";
+        String[] queries = {"Blockchain%20Technology", "Cryptocurrencies", "Applications%20of%20Blockchain", "Blockchain%20Business", "Blockchain%20Security", "Blockchain%20Society"};
+        for (String query : queries) {
+            String url = "https://newsapi.org/v2/everything?q=" + query + "&apiKey=" + API_KEY + "&language=en";
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .build();
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .build();
 
-        try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            String responseBody = response.body();
+            try {
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                String responseBody = response.body();
 
-            // Parse JSON
-            Gson gson = new Gson();
-            JsonObject jsonResponse = gson.fromJson(responseBody, JsonObject.class);
+                // Parse JSON
+                Gson gson = new Gson();
+                JsonObject jsonResponse = gson.fromJson(responseBody, JsonObject.class);
 
-            // Extract array from JSON
-            JsonArray articles = jsonResponse.getAsJsonArray("articles");
+                // Extract array from JSON
+                JsonArray articles = jsonResponse.getAsJsonArray("articles");
 
-            //Write to CSV
-            writeArticlesToCsv(articles);
-        }
-        catch (IOException | InterruptedException e) {
-            throw new CustomException("Please check your network connection. ");
+                //Write to CSV
+                writeArticlesToCsv(articles, query, "NewsPost");
+            } catch (IOException | InterruptedException e) {
+                throw new CustomException("Please check your network connection. ");
+            }
         }
     }
-    private static void writeArticlesToCsv(JsonArray articles) {
-        try (CSVWriter writer = new CSVWriter(new FileWriter(FILE_PATH))) {
+    private static void writeArticlesToCsv(JsonArray articles, String query, String method) {
+        boolean fileExists = new java.io.File(FILE_PATH).exists();
+        try (CSVWriter writer = new CSVWriter(new FileWriter(FILE_PATH, true))) {
             // Header row
-            String[] header = {"Link", "Source", "Title", "Summary", "Content", "Date", "Author", "Type", "Tag", "Categories"};
-            writer.writeNext(header);
+            if (!fileExists) {
+                String[] header = {"Link", "Source", "Title", "Summary", "Content", "Date", "Author", "Type", "Tag", "Categories"};
+                writer.writeNext(header);
+            }
 
             // Write article rows
             for (int i = 0; i < articles.size(); i++) {
@@ -61,10 +72,13 @@ public class NewsApi {
                 String description = article.has("description") && !article.get("description").isJsonNull() ? article.get("description").getAsString() : "";
                 String url = article.has("url") && !article.get("url").isJsonNull() ? article.get("url").getAsString() : "";
                 String publishedAt = article.has("publishedAt") && !article.get("publishedAt").isJsonNull() ? article.get("publishedAt").getAsString() : "";
-                String content = article.has("content") && !article.get("content").isJsonNull() ? article.get("content").getAsString() : "";
-                String type = "";
+                String content = getDetails(url);
+                if(content == ""){
+                    content = article.has("content") && !article.get("content").isJsonNull() ? article.get("content").getAsString() : "";
+                }
+                String type = method;
                 String tag = "";
-                String categories = "";
+                String categories = getCategoryFromQuery(query);
                 String[] row = {url, source, title, description, content , publishedAt, author , type, tag, categories};
                 writer.writeNext(row);
             }
@@ -73,6 +87,45 @@ public class NewsApi {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    private static String getDetails(String url) {
+        try {
+            //Connect to URL
+            Document doc = Jsoup.connect(url)
+                    .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+                    .get();
+            //Get paragraph elements
+            Elements paragraphs = doc.select("p");
+            StringBuilder contentBuilder = new StringBuilder();
+            for (Element paragraph : paragraphs) {
+                contentBuilder.append(paragraph.text()).append("\n");
+            }
+            return contentBuilder.toString().trim();
+        } catch (IllegalArgumentException e) {
+            System.err.println("The supplied URL, '" + url + "', is malformed. Make sure it is an absolute URL, and starts with 'http://' or 'https://'.");
+            return "";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+    private static String getCategoryFromQuery(String query) {
+        switch (query) {
+            case "Blockchain%20Technology":
+                return "Blockchain Technology";
+            case "Cryptocurrencies":
+                return "Cryptocurrencies";
+            case "Applications%20of%20Blockchain":
+                return "Applications of Blockchain";
+            case "Blockchain%20Business":
+                return "Blockchain Business";
+            case "Blockchain%20Security":
+                return "Blockchain Security";
+            case "Blockchain%20Society":
+                return "Blockchain Society";
+            default:
+                return "Other";
         }
     }
 }
