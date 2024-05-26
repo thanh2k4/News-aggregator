@@ -19,7 +19,7 @@ public class HistorySearchModelTypeAdapter extends TypeAdapter<HistorySearchMode
             } else if (name.equals("title")) {
                 historySearchModel.setTitle(reader.nextString());
             } else if (name.equals("timestamp")) {
-                historySearchModel.setTitle(reader.nextString());
+                historySearchModel.setTimestamp(reader.nextString());
             } else {
                 reader.skipValue(); // Skip unknown elements
             }
