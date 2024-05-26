@@ -14,7 +14,9 @@ public class HistorySearchModelTypeAdapter extends TypeAdapter<HistorySearchMode
         reader.beginObject();
         while (reader.hasNext()) {
             String name = reader.nextName();
-            if (name.equals("webName")) {
+            if (name.equals("id")) {
+                historySearchModel.setId(reader.nextInt());
+            } else if (name.equals("webName")) {
                 historySearchModel.setWebName(reader.nextString());
             } else if (name.equals("title")) {
                 historySearchModel.setTitle(reader.nextString());
@@ -32,6 +34,7 @@ public class HistorySearchModelTypeAdapter extends TypeAdapter<HistorySearchMode
     @Override
     public void write(JsonWriter writer, HistorySearchModel value) throws IOException {
         writer.beginObject();
+        writer.name("id").value(value.getId());
         writer.name("webName").value(value.getWebName());
         writer.name("title").value(value.getTitle());
         writer.name("timestamp").value(value.getTimestamp());
