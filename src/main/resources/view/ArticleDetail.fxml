@@ -73,24 +73,6 @@
                                     <Hyperlink fx:id="linkText" prefHeight="24.0" prefWidth="550.0" />
                                           </children>
                                       </HBox>
-                                      <HBox layoutX="10.0" layoutY="10.0">
-                                          <children>
-                                              <VBox prefHeight="18.0" prefWidth="176.0">
-                                                  <children>
-                                                      <Text fill="#841b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
-                                                          <font>
-                                                              <Font name="Segoe UI Bold Italic" size="12.0" />
-                                                          </font>
-                                                      </Text>
-                                                  </children>
-                                              </VBox>
-                                              <VBox HBox.hgrow="ALWAYS">
-                                                  <children>
-                                                      <Text fx:id="typeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="496.5365295410156" VBox.vgrow="ALWAYS" />
-                                                  </children>
-                                              </VBox>
-                                          </children>
-                                      </HBox>
                                       <HBox layoutX="10.0" layoutY="106.0" prefHeight="41.0" prefWidth="673.0">
                                           <children>
                                               <VBox prefHeight="18.0" prefWidth="176.0">

@@ -83,10 +83,8 @@ public class SideBarController {
             Stage popupStage = new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);
             popupStage.setTitle("Confirm Reload Data");
-            popupStage.setScene(new Scene(root, 300, 100));
-
+            popupStage.setScene(new Scene(root, 400, 150));
             controller.setPopupStage(popupStage);
-
             popupStage.showAndWait();
         }
         catch (IOException e) {

@@ -1,17 +1,18 @@
 package crawler;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Article {
     private int id;
     private String link;
     private String source;
-    private String type;
     private String summary;
     private String title;
     private String content;
-    private LocalDate date;
+    private String date;
     private String author;
     private String tags;
     private String categories;
@@ -28,12 +29,6 @@ public class Article {
     }
     public void setSource(String source) {
         this.source = source;
-    }
-    public String getType() {
-        return type;
-    }
-    public void setType(String type) {
-        this.type = type;
     }
     public String getSummary() {
         return summary;
@@ -57,9 +52,9 @@ public class Article {
         this.content = content;
     }
     public LocalDate getDate() {
-        return date;
+        return LocalDateTime.parse( date , DateTimeFormatter.ISO_DATE_TIME).toLocalDate();
     }
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
     public String getAuthor() {

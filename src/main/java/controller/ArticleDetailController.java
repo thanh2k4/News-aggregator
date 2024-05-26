@@ -34,8 +34,6 @@ public class ArticleDetailController {
     @FXML
     private Hyperlink linkText;
 
-    @FXML
-    private Text typeText;
 
     @FXML
     private Text titleText;
@@ -82,7 +80,6 @@ public class ArticleDetailController {
             }
         });
 
-        typeText.setText(article.getType());
         titleText.setText(article.getTitle());
         titleText.setFill(Color.RED);
         summaryText.setText(article.getSummary());
@@ -100,12 +97,14 @@ public class ArticleDetailController {
         hashtagText.setText(hashtags);
 
         String categories = article.getCategories();
-        StringBuilder categoryBuilder = new StringBuilder(categories);
-        categoryText.setText(categoryBuilder.toString());
-
+        if (categories != null && !categories.isEmpty()) {
+            StringBuilder categoryBuilder = new StringBuilder(categories);
+            categoryText.setText(categoryBuilder.toString());
+        }
+        System.out.println();
         publishDateText.setText( article.getDate().toString());
     }
-    private void displayContentWithoutHighlighting(Vector<String> htmlContent) {
+    private void displayContentWithoutHighlighting( Vector<String> htmlContent ) {
         contentTextFlow.getChildren().clear();
         for (String paragraph : htmlContent) {
             String textContent = removeHtmlTags(paragraph);

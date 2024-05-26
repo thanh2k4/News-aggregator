@@ -1,24 +1,17 @@
 package controller;
 
 import crawler.NewsApi;
-import exception.CustomException;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.EventTarget;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Alert;
-import javafx.stage.Modality;
+
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
-import javafx.stage.Window;
 
-import java.io.IOException;
-import java.net.ConnectException;
-import java.nio.channels.UnresolvedAddressException;
 
 public class ConfirmReloadDataController {
 
@@ -55,7 +48,7 @@ public class ConfirmReloadDataController {
             protected Void call() throws Exception {
                 try {
                     NewsApi.main(args);
-                } catch (CustomException e) {
+                } catch (Exception e) {
                     Platform.runLater(() -> {
                         Alert alertError = new Alert(Alert.AlertType.ERROR);
                         alertError.setTitle("Error");

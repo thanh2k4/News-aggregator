@@ -10,7 +10,8 @@
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
-            <Label text="Are you sure to reload data?"/>
+            <Label text="Are you sure to reload data ( network connection required ) ?"/>
+            <Label text="( All old data and old history will be lost )"/>
             <HBox alignment="CENTER" spacing="10">
                 <children>
                     <Button text="Cancel" fx:id="cancelButton" prefWidth="80" minWidth="80" maxWidth="80"/>
