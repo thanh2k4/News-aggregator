@@ -62,11 +62,11 @@ public class Search {
         return result;
     }
 
-    public List<Article> searchArticleByAuthor (String author){
+    public List<Article> searchArticleByAuthor (String queryAuthor){
 
         Map<Article, Double> similarityScores = new HashMap<>();
         for (Article article : articleList) {
-            TextVector queryVector = new TextVector(author);
+            TextVector queryVector = new TextVector(queryAuthor);
             TextVector authorVector = new TextVector( article.getAuthor() );
             double similarity = calculateSimilarity(queryVector, authorVector);
             similarityScores.put(article, similarity);
@@ -85,7 +85,25 @@ public class Search {
     }
 
     public List<Article> searchArticleByHashtag(String queryHashtag) {
-        return null;
+
+        Map<Article, Double> similarityScores = new HashMap<>();
+        for (Article article : articleList) {
+            TextVector queryVector = new TextVector(queryHashtag);
+            TextVector hashtagVector = new TextVector( article.getTags() );
+            double similarity = calculateSimilarity(queryVector, hashtagVector);
+            similarityScores.put(article, similarity);
+        }
+
+        List<Map.Entry<Article, Double>> sortedArticles = new ArrayList<>(similarityScores.entrySet());
+        sortedArticles.sort((entry1, entry2) -> Double.compare(entry2.getValue(), entry1.getValue()));
+
+        List<Article> result = new ArrayList<>();
+
+        for ( Map.Entry<Article, Double> entry : sortedArticles ){
+            result.add( entry.getKey() );
+        }
+
+        return result;
     }
 
     public List<Article> searchArticleByDate(LocalDate startDate, LocalDate endDate) {
