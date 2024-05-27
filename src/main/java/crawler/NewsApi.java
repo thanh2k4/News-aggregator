@@ -1,30 +1,27 @@
 package crawler;
 
-import java.io.FileWriter;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.lang.reflect.Type;
-
-import com.google.gson.Gson;
 import com.google.gson.*;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewsApi {
     private static final String FILE_PATH = "src/main/resources/data/articles.json";
-    private static final String API_KEY = "10398e3c397d4c438a6c16e3f88785d1";
+    private static final String API_KEY = "ddd7b958a4ec4a1f89f21ff76c7f5a6b";
 
     public static void main(String[] args) {
         String[] queries = {"Blockchain%20Technology", "Cryptocurrencies", "Applications%20of%20Blockchain", "Blockchain%20Business", "Blockchain%20Security", "Blockchain%20Society"};

@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.util.*;
 
 
-
 public class Search {
 
     private final static double THRESHOLD = 0.7;
@@ -119,27 +118,33 @@ public class Search {
     }
 
     public Article searchArticleByID(int id) {
-        return articleList.get(id);
+        if ( id < articleList.size() ) {
+            return articleList.get(id);
+        }
+        return null;
     }
 
     public List<Article> searchArticleUnionMultipleCriterions(List<Pair<String, String>> queries) {
-        Set<Integer> setOfIds = new HashSet<>();
+        Set<Integer> setOfIds = new LinkedHashSet<>();
         Search search = new Search();
         List<Article> result = new ArrayList<>();
         for (Pair<String, String> query : queries) {
             List<Article> temp = new ArrayList<>();
             switch (query.getKey()){
-                case "title":
+                case "Title":
                     temp = search.searchArticleByTitle(query.getValue());
                     break;
-                case "author":
+                case "Author":
                     temp = search.searchArticleByAuthor(query.getValue());
                     break;
-                case "hashtag":
+                case "Hashtag":
                     temp = search.searchArticleByHashtag(query.getValue());
                     break;
-                case "id":
+                case "ID":
                     temp.add(search.searchArticleByID(Integer.parseInt(query.getValue())));
+                    break;
+                default:
+                    temp = search.getArticleList();
             }
             for (Article article : temp) {
                 setOfIds.add(article.getId());
@@ -148,26 +153,39 @@ public class Search {
         for (Integer id : setOfIds) {
             result.add(searchArticleByID(id));
         }
+        System.out.println();
         return result;
     }
 
     public List<Article> searchArticleIntersectMutipleCriterions(List<Pair<String, String>> queries) {
         Search search = new Search();
+        Search tempSearch = new Search();
         for ( Pair<String, String> query : queries ) {
-            switch (query.getKey()){
-                case "title":
-                    search.setArticleList(search.searchArticleByTitle(query.getValue()));
-                    break;
-                case "author":
-                    search.setArticleList(search.searchArticleByAuthor(query.getValue()));
-                    break;
-                case "hashtag":
-                    search.setArticleList(search.searchArticleByHashtag(query.getValue()));
-                    break;
-                case "id" :
-                    search.setArticleList(new ArrayList<>(Collections.singletonList(search.searchArticleByID(Integer.parseInt(query.getValue())))));
-                    break;
-            }
+
+                switch (query.getKey()){
+                    case "Title":
+                        search.setArticleList(search.searchArticleByTitle(query.getValue()));
+                        break;
+                    case "Author":
+                        search.setArticleList(search.searchArticleByAuthor(query.getValue()));
+                        break;
+                    case "Hashtag":
+                        search.setArticleList(search.searchArticleByHashtag(query.getValue()));
+                        break;
+                    case "ID" :
+                        List<Article> temp = new ArrayList<>();
+                        for ( Article article : search.getArticleList() ) {
+                            if ( article.getId() == Integer.parseInt(query.getValue()) ) {
+
+                                if ( tempSearch.searchArticleByID(Integer.parseInt(query.getValue()) ) != null ) {
+                                    temp.add(tempSearch.searchArticleByID(Integer.parseInt(query.getValue())));
+                                }
+                            }
+                        }
+                        search.setArticleList( temp );
+                        break;
+                }
+
         }
         return search.getArticleList();
     }
