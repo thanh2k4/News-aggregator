@@ -26,7 +26,7 @@ public class NewsApi {
     public static void main(String[] args) {
         String[] queries = {"Blockchain%20Technology", "Cryptocurrencies", "Applications%20of%20Blockchain", "Blockchain%20Business", "Blockchain%20Security", "Blockchain%20Society"};
         List<Article> allArticles = new ArrayList<>();
-        int id = 0;
+            int id = 0;
         for (String query : queries) {
             String url = "https://newsapi.org/v2/everything?q=" + query + "&apiKey=" + API_KEY + "&language=en";
 
