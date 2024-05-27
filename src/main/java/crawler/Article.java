@@ -52,7 +52,7 @@ public class Article {
         this.content = content;
     }
     public LocalDate getDate() {
-        return LocalDateTime.parse( date , DateTimeFormatter.ISO_DATE_TIME).toLocalDate();
+            return LocalDate.parse( date , DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
     public void setDate(String date) {
         this.date = date;

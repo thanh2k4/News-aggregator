@@ -1,6 +1,7 @@
 package controller;
 
 import crawler.Article;
+import data_mining.LoadArticle;
 import data_mining.Search;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,7 @@ import history.HistorySearchFileManager;
 
 public class SearchContentController {
 	private static final int RESULTS_PER_PAGE = 20;
-    private List<Article> searchResult;
+    private List<Article> searchResult = LoadArticle.getArticleList();
     private int currentPage = 0;
     @FXML
     private BorderPane borderPane;

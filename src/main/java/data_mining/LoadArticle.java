@@ -19,9 +19,6 @@ public class LoadArticle {
             try (FileReader reader = new FileReader(FILE_PATH)) {
                 Type articleListType = new TypeToken<List<Article>>() {}.getType();
                 List<Article> result = gson.fromJson(reader, articleListType);
-                for ( int i = 0 ; i < result.size() ; i++) {
-                    result.get(i).setId(i);
-                }
                 articleList = result;
             } catch (IOException e) {
                 e.printStackTrace();
