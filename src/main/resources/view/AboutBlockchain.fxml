@@ -57,7 +57,7 @@
                         <Font name="Gill Sans MT" size="15.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" layoutX="171.0" layoutY="255.0" prefHeight="42.0" prefWidth="285.0" styleClass="labeltext-custom" text="HOW DOES A BLOCKCHAIN WORKS?" textFill="#d71010">
+                <Label alignment="CENTER" layoutX="171.0" layoutY="255.0" prefHeight="42.0" prefWidth="285.0" styleClass="labeltext-custom" text="HOW DOES A BLOCKCHAIN WORK?" textFill="#d71010">
                     <font>
                         <Font name="Gill Sans MT" size="15.0" />
                     </font>
