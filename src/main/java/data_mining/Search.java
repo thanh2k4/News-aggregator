@@ -63,12 +63,24 @@ public class Search {
     }
 
     public List<Article> searchArticleByAuthor (String author){
-        List<Article> result = new ArrayList<>();
-        for ( Article article : articleList ){
-            if ( article.getAuthor().equals(author) ){
-                result.add( article );
-            }
+
+        Map<Article, Double> similarityScores = new HashMap<>();
+        for (Article article : articleList) {
+            TextVector queryVector = new TextVector(author);
+            TextVector authorVector = new TextVector( article.getAuthor() );
+            double similarity = calculateSimilarity(queryVector, authorVector);
+            similarityScores.put(article, similarity);
         }
+
+        List<Map.Entry<Article, Double>> sortedArticles = new ArrayList<>(similarityScores.entrySet());
+        sortedArticles.sort((entry1, entry2) -> Double.compare(entry2.getValue(), entry1.getValue()));
+
+        List<Article> result = new ArrayList<>();
+
+        for ( Map.Entry<Article, Double> entry : sortedArticles ){
+            result.add( entry.getKey() );
+        }
+
         return result;
     }
 
