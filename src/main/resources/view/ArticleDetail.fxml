@@ -22,7 +22,7 @@
                             <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="113.0">
                            <children>
-                              <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleBackAction" text="Button" />
+                              <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleBackAction" text="Back" />
                            </children>
                         </HBox>
                         <Label alignment="CENTER" prefHeight="68.0" prefWidth="446.0" text="ARTICLE DETAIL" textFill="#db4316">
@@ -32,7 +32,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="129.0">
                            <children>
-                              <Button fx:id="highlightEntitiesButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleHighlightEntities" text="Button" />
+                              <Button fx:id="highlightEntitiesButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleHighlightEntities" text="Highlight" />
                            </children>
                         </HBox>
                             </children>
